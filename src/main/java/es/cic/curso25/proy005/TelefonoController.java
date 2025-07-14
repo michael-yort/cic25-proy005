@@ -36,7 +36,7 @@ public class TelefonoController {
         telefono0.setTitular("Juan" + id);
 
         resultado.add(telefono0);
-        // System.out.println(a);
+        // System.out.println(a);ç
 
         return resultado;
     }
