@@ -3,8 +3,12 @@ package es.cic.curso25.proy005;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,17 +17,47 @@ import org.springframework.web.bind.annotation.RestController;
 // Si la peticion en la url contiene /telefono ejecutara y devolvera el mensaje
 // Hola por el navegador
 @RequestMapping("/telefono")
-
 public class TelefonoController {
 
-    // @GetMapping
-    // public String mensaje(){
-    // return "Hola mundo";
-    // }
+    private int contador = 0;
+    // --------------------- CREATE-----------------------//
 
-    //Al estar fuera puedo llenar la lista cada vez que meto una url con un id
+    @PostMapping
+    public long create(@RequestBody Telefono telefono) {
+
+        return ++contador;
+
+    }
+
+    // -------------------------------------------------------------------//
+
+    // ---------------------------- UPDATE--------------------------------//
+
+    @PutMapping
+    public void update(Telefono telefono) {
+        // Falta de escribir todo
+    }
+    // --------------------------------------------------------------------//
+
+    // --------------------------- Delete --------------------------------//
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable long id) {
+        // Falta de escribir todo
+        contador = contador;
+    }
+    // --------------------------------------------------------------------//
+
+
+
+    //--------------------------GET--------------------//
+
+    @GetMapping
+    public String mensaje() {
+        return "Hola mundo";
+    }
+
+    // Al estar fuera puedo llenar la lista cada vez que meto una url con un id
     List<Telefono> resultado = new ArrayList<>();
-    
 
     @GetMapping("/{id}")
     public List<Telefono> list(@PathVariable long id) {
@@ -36,12 +70,10 @@ public class TelefonoController {
         telefono0.setTitular("Juan" + id);
 
         resultado.add(telefono0);
-        // System.out.println(a);ç
+        // System.out.println(a);
 
         return resultado;
     }
-
-    private int contador = 0;
 
     @GetMapping("/{id}/{contrato}")
     public Telefono get(@PathVariable int id, @PathVariable int contrato) {
