@@ -3,6 +3,7 @@ package es.cic.curso25.proy005;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 //LLamo a este controlador 
 @RestController
 // Si la peticion en la url contiene /telefono ejecutara y devolvera el mensaje
@@ -19,13 +21,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/telefono")
 public class TelefonoController {
 
+    @Autowired
+    private TelefonoService telefonoService;
+    //private TelefonoService telefonoService =new TelefonoService();
     private int contador = 0;
     // --------------------- CREATE-----------------------//
 
     @PostMapping
     public long create(@RequestBody Telefono telefono) {
 
-        return ++contador;
+        long id = telefonoService.create(telefono);
+        return id;
+
+        //return ++contador;
 
     }
 

@@ -19,7 +19,8 @@ class Proy005ApplicationTests {
 
 	@Autowired
 	private MockMvc mockMvc;
-
+//MockMvc es un objeto de test que si pasa por casi todas las piezas de mi codigo.
+//MockMvc simula todo el flujo desde el navegador hasta el controlador.
 	@Test
 	void testTelefonoDelete() throws Exception{
 		mockMvc.perform(delete("/telefono/4"))
